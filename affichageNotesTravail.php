@@ -9,17 +9,22 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" action="get">
-        <select name="groupe" id="groupe">
-            <option value="g1">Groupe 1</option>
-            <option value="g2">Groupe 2</option>
-        </select>
-        <select name="travail" id="travail">
-            <option value="4">Travail 1</option>
-            <option value="5">Travail 2</option>
-            <option value="6">Examen final</option>
-        </select>
-        <input type="submit" value="Soumettre">
+    <form class='block' action="get">
+    <h3>Selectionner le groupe: <select name="groupe" id="groupe">
+            <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g1" ) ?
+            "<option value='g1' selected>Groupe 1</option>": "<option value='g1'>Groupe 1</option>"; ?>
+            <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g2" ) ?
+            "<option value='g2' selected>Groupe 2</option>": "<option value='g2'>Groupe 2</option>"; ?>
+        </select></h3>
+        <h3>Selectionner le travail: <select name="travail" id="travail">
+            <?php echo (isset($_GET['travail']) && $_GET['travail'] == "4" ) ?
+            "<option value='4' selected>Travail pratique 1</option>": "<option value='4'>Travail pratique 1</option>"; ?>
+            <?php echo (isset($_GET['travail']) && $_GET['travail'] == "5" ) ?
+            "<option value='5' selected>Travail pratique 2</option>": "<option value='5'>Travail pratique 2</option>"; ?>
+            <?php echo (isset($_GET['travail']) && $_GET['travail'] == "6" ) ?
+            "<option value='6' selected>Examen final</option>": "<option value='6'>Examen final</option>"; ?>
+        </select></h3>
+        <input type="submit" class='btn' value="Soumettre">
     </form>
 <?php
     if(isset($_GET['travail']) && isset($_GET['groupe'])) {
@@ -28,12 +33,21 @@
 
         $notes = filtreGroupe($groupe);
         $somme = 0;
+        echo "<table class='tableNF'><tr>
+            <th>Nom</th>
+            <th>Note</th>
+            </tr>";
+
         foreach($notes as $etudiant){
+            echo "<tr>";
             $somme += $etudiant[$travail];
-            echo "<h3>".$etudiant[0]." ".$etudiant[1].": ".$etudiant[$travail]."%</h3>";
+            echo "<td>".$etudiant[0]." ".$etudiant[1]."</td>
+                <td>$etudiant[$travail]%</td>";
+                echo "</tr>";
         }
         $moyenne = $somme/count($notes);
-        echo "La moyenne du groupe est ".number_format($moyenne,2)."%";
+        echo "<tr><td colspan='2'><b>La moyenne du groupe est ".number_format($moyenne,2)."%</b></td></tr>";
+        echo "</table>";
     }
 ?>
 </body>

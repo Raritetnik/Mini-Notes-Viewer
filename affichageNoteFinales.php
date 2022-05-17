@@ -31,7 +31,7 @@
         <?php echo (isset($_GET['sexF'])) ? "<input type='checkbox' name='sexF' value='F' checked>":
         "<input type='checkbox' name='sexF' value='F'>";?>
         <label for="sexF">Les femmes</label><br></h3>
-        <input type="submit" value="Soumettre">
+        <input class='btn' type="submit" value="Soumettre">
     </form>
     </div>
     <?php
@@ -74,13 +74,24 @@
          */
         $somme=0;
         if(!empty($notes)){
+            echo "<table class='tableNF'><tr>
+            <th>Nom</th>
+            <th>Sex</th>
+            <th>Note Final</th>
+            </tr>";
+
             foreach($notes as $etudiant){
+                echo "<tr>";
                 $noteFinale = ($etudiant[4]*0.15) + ($etudiant[5]*0.35) + ($etudiant[6]*0.50);
                 $somme += $noteFinale;
-                echo "<h3>".$etudiant[0]." ".$etudiant[1].", sex:".$etudiant[2].": $noteFinale%</h3>";
+                echo "<td>".$etudiant[0]." ".$etudiant[1]."</td>
+                <td>".$etudiant[2]."</td>
+                <td>$noteFinale%</td>";
+                echo "</tr>";
             }
             $moyenne = $somme/count($notes);
-            echo "<h2>La moyenne du groupe est ".number_format($moyenne,2)."%</h2>";
+            echo "<tr><td colspan='3'><b>La moyenne du groupe est ".number_format($moyenne,2)."%</b></td></tr>";
+            echo "</table>";
         } else {
             echo "<h3>Aucune élève a été trouvé.</h3>";
         }

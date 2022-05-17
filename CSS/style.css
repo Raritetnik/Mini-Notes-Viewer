@@ -15,5 +15,33 @@ nav {
 
 .block {
     border: 2px solid black;
-    background-color: tomato;
+    background-color: rgb(109, 19, 3);
+    margin: 20px;
+    padding: 0px 20px;
+    width: 600px;
+    color: aliceblue;
+
+}
+
+.btn {
+    margin: 0px 0px 20px 20px;
+    color: aliceblue;
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.tableNF {
+    margin: 20px;
+    font-size: 1.3em;
+    border: 3px black solid;
+}
+.tableNF tr {
+    position: relative;
+    border-bottom: 1px solid black;
+}
+.tableNF td {
+    text-align: center;
+    border: 1px black solid;
+
 }
