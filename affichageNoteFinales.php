@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once("bd_notes.php"); ?>
+    <?php require_once("fonctions.php"); ?>
     <div class="block">
     <form method="get">
         <h3>Selectionner le groupe: <select name="groupe" id="groupe">

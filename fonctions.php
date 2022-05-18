@@ -1,5 +1,6 @@
 <?php
     /**
+     * La base de données avec les tableaux des étudiants
      * array(
      * [0] le prénom,
      * [1] le nom,
@@ -28,10 +29,13 @@
         );
     }
 
-    /**
-     * Les fonctions
-     */
+    /**=========================================================
+     * =================   Les fonctions  ======================
+     * =========================================================*/
 
+    /**
+     * Reçoit en paramètre le groupe demandé et retourne le tableau nécessaire
+     */
     function filtreGroupe($groupe) {
         $bd = new BD();
         if($groupe == "g1") {   // Groupe 1 seulement
@@ -44,6 +48,9 @@
         }
     }
 
+    /**
+     * Reçoit en paramètre le sex des étudiants et retourne un nouveau tableau sans lui
+     */
     function filtreSex($sex, $notes) {
         if(empty($notes)){
             return null;
@@ -61,6 +68,9 @@
         return $notesFiltre;
     }
 
+    /**
+     * Reçoit en s'il faut afficher seulement les étudiant en échec et retourne le tableau
+     */
     function filtreEchec($echec, $notes) {
         if(empty($notes)){
             return null;
