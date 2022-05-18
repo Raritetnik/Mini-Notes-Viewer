@@ -9,6 +9,24 @@
     <title>Document</title>
 </head>
 <body>
+    <form method="get">
+        <?php echo (isset($_GET['code'])) ?
+        "<input type='text' name='code' value=".$_GET['code'].">" :
+        "<input type='text' name='code'>)"?>
+        <input type="submit">
+    </form>
+    <?php
+    if(isset($_GET['code'])){
+        $codeEtudiant = $_GET['code'];
+        $regExp = "/([A-Z][A-Z][A-Z][A-Z]\d\d\d\d\d)/";
+        if(preg_match($regExp, $codeEtudiant)) {
+            echo 'Ressemble';
+        } else {
+            echo "Non";
+        }
 
+
+    }
+    ?>
 </body>
 </html>
