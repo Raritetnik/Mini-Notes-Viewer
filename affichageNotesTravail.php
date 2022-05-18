@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" action="get">
+    <form method="get">
         <select name="groupe" id="groupe">
             <option value="g1">Groupe 1</option>
             <option value="g2">Groupe 2</option>
