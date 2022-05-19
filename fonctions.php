@@ -87,4 +87,20 @@
         return $notesFiltre;
     }
 
+    /**
+     * Fait une recherche dans les tables et return si l'étudiant est existant
+     */
+    function rechercheEtudiant($notes, $codeEtudiant) {
+        foreach($notes as $code => $etudiantInfo) {
+            if($code == $codeEtudiant) { return true; }
+        }
+        return false;
+    }
+
+    /**
+     * Calculer la note final de l'étudiant
+     */
+    function calculerNoteFinal($etudiant){
+        return ($etudiant[4]*0.15) + ($etudiant[5]*0.35) + ($etudiant[6]*0.50);
+    }
 ?>
