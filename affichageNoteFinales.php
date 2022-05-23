@@ -38,7 +38,7 @@
     </header>
     <main>
     <?php
-    if(isset($_GET['groupe'])) {
+    if(isset($_GET['groupe']) && isset($_GET['sex'])) {
         /**
          * Reception et gestion de groupes
          */
