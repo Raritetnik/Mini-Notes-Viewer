@@ -15,19 +15,16 @@
         <form method="get">
             <h3>Selectionner le groupe</h3>
             <select name="groupe" id="groupe">
-                <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g1" ) ?
-            "<option value='g1' selected>Groupe 1</option>": "<option value='g1'>Groupe 1</option>"; ?>
-                    <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g2" ) ?
-            "<option value='g2' selected>Groupe 2</option>": "<option value='g2'>Groupe 2</option>"; ?>
+            <option value='g1' <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g1" ) ? "selected" : ""; ?>>Groupe 1</option>
+            <option value='g2' <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g2" ) ? "selected" : ""; ?>>Groupe 2</option>
             </select>
+
+
             <h3>Selectionner le travail</h3>
             <select name="travail" id="travail">
-                <?php echo (isset($_GET['travail']) && $_GET['travail'] == "4" ) ?
-            "<option value='4' selected>Travail pratique 1</option>": "<option value='4'>Travail pratique 1</option>"; ?>
-                    <?php echo (isset($_GET['travail']) && $_GET['travail'] == "5" ) ?
-            "<option value='5' selected>Travail pratique 2</option>": "<option value='5'>Travail pratique 2</option>"; ?>
-                        <?php echo (isset($_GET['travail']) && $_GET['travail'] == "6" ) ?
-            "<option value='6' selected>Examen final</option>": "<option value='6'>Examen final</option>"; ?>
+            <option value='4' <?php echo (isset($_GET['travail']) && $_GET['travail'] == "4" ) ?"selected": ""; ?>>Travail pratique 1</option>
+            <option value='5' <?php echo (isset($_GET['travail']) && $_GET['travail'] == "5" ) ?"selected": ""; ?>>Travail pratique 2</option>
+            <option value='6' <?php echo (isset($_GET['travail']) && $_GET['travail'] == "6" ) ?"selected": ""; ?>>Examen final</option>
             </select>
             <br>
             <input type="submit" class='btn' value="Soumettre"> </form>

@@ -15,23 +15,24 @@
         <form method="get">
             <h3>Selectionner le Groupe</h3>
             <select name="groupe" id="groupe">
-            <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g1" ) ?
-            "<option value='g1' selected>Groupe 1</option>": "<option value='g1'>Groupe 1</option>"; ?>
-            <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g2" ) ?
-            "<option value='g2' selected>Groupe 2</option>": "<option value='g2'>Groupe 2</option>"; ?>
-            <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "all" ) ?
-            "<option value='all' selected>Les deux groupes</option>": "<option value='all'>Les deux groupes</option>"; ?>
+            <option value='g1'
+            <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g1" ) ? "selected" : ""; ?>>Groupe 1</option>
+            <option value='g2'
+            <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "g2" ) ? "selected" : ""; ?>>Groupe 2</option>
+            <option value='all'
+            <?php echo (isset($_GET['groupe']) && $_GET['groupe'] == "all" ) ? "selected" : ""; ?>>Les deux groupes</option>
             </select>
-            <h3><?php echo (isset($_GET['enEchec'])) ? "<input class='checkbox' type='checkbox' name='enEchec' value='1' checked>":
-            "<input class='checkbox' type='checkbox' name='enEchec' value='1'>";?>
-            <label for="enEchec">Afficher seulement les élèves en échec</label><br></h3>
-            <h3>Selectionner les sexes des étudiants:</h3>
-            <?php echo (isset($_GET['sexM'])) ? "<input class='checkbox' type='checkbox' name='sexM' value='M' checked>":
-            "<input class='checkbox' type='checkbox' name='sexM' value='M'>";?>
-            <label for="sexM">Les hommes</label>
-            <?php echo (isset($_GET['sexF'])) ? "<input class='checkbox' type='checkbox' name='sexF' value='F' checked>":
-            "<input class='checkbox' type='checkbox' name='sexF' value='F'>";?>
-            <label for="sexF">Les femmes</label>
+
+            <h3><input class='checkbox' type='checkbox' name='enEchec' value='1' <?php echo (isset($_GET['enEchec'])) ? " checked": "";?>>
+            <label for="enEchec">Afficher seulement les élèves en échec</label></h3>
+
+            <h3>Selectionner le sexe des étudiants:</h3>
+            <input class='checkbox' type='radio' id='sexM' name='sex' value='M' <?php echo (isset($_GET['sex']) && $_GET['sex'] == "M" ) ? "checked": "";?>>
+            <label for="sex">Les hommes</label>
+            <input class='checkbox' type='radio' id='sexM' name='sex' value='F' <?php echo (isset($_GET['sex']) && $_GET['sex'] == "F" ) ? "checked": "";?>>
+            <label for="sex">Les femmes</label>
+            <input class='checkbox' type='radio' id='sexMF' name='sex' value='MF' <?php echo (isset($_GET['sex']) && $_GET['sex'] == "MF" ) ? "checked": "";?>>
+            <label for="sex">Les deux</label>
             <br><input class='btn' type="submit" value="Soumettre">
         </form>
     </header>
@@ -46,14 +47,10 @@
         /**
          * Reception de filtre sur le sexe de l'etudiant
          */
-        if(isset($_GET['sexF']) && isset($_GET['sexM'])){
-            $sex = "MF";
-        } else if(isset($_GET['sexM'])) {
-            $sex = $_GET['sexM'];
-        } else if(isset($_GET['sexF'])) {
-            $sex = $_GET['sexF'];
+        if(isset($_GET['sex'])) {
+            $sex = $_GET['sex'];
         } else {
-            $sex = "";
+            $sex = '';
         }
         /**
          * Reception d'affichage ceux qui ont échoués ou non
